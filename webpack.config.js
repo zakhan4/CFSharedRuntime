@@ -50,26 +50,16 @@ module.exports = async (env, options) => {
         input: "./src/functions/functions.js"
       }),
       new HtmlWebpackPlugin({
-        filename: "functions.html",
-        template: "./src/functions/functions.html",
-        chunks: ["polyfill", "functions"]
-      }),
-      new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane", "functions"]
+        chunks: ["polyfill", "taskpane", "functions", "commands"]
       }),
       new CopyWebpackPlugin([
         {
           to: "taskpane.css",
           from: "./src/taskpane/taskpane.css"
         }
-      ]),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"]
-      })
+      ])
     ],
     devServer: {
       headers: {
